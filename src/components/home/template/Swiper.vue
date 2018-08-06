@@ -46,10 +46,11 @@ export default {
     .wrapper
         overflow: hidden
         width: 100%
-        height: 0
+        // height: 2rem
         // 根据图片的宽高比然后将高度撑开，31.25%事根据宽度来计算的
         // 这样在网速比较差的时候，不会加载抖动
-        padding-bottom: 31.25%
+        height: 0
+        padding-bottom: 27%
         background: #eee
         .swiper-img
             width: 100%
