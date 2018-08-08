@@ -4,12 +4,15 @@
         "city": "深圳",
         "swiperList": [{
             "id": "0001",
+            "imgUrl": "http://img1.qunarzz.com/piao/fusion/1806/de/df09fa61aed2d502.jpg_750x200_67472739.jpg"
+        }, {
+            "id": "000w",
             "imgUrl": "http://img1.qunarzz.com/piao/fusion/1805/3b/ef86879aa50e3002.jpg_750x200_2a108508.jpg"
         }, {
-            "id": "0002",
+            "id": "0003",
             "imgUrl": "http://img1.qunarzz.com/piao/fusion/1807/a1/41a802abfc4f0202.jpg_750x200_9f0cf69c.jpg"
         }, {
-            "id": "0003",
+            "id": "0004",
             "imgUrl": "http://img1.qunarzz.com/piao/fusion/1807/e8/ad9398da40eb6402.jpg_750x200_f9e744db.jpg"
         }],
         "iconList": [{

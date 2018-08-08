@@ -7,16 +7,21 @@
             <span class="iconfont">&#xe632;</span>
             输入城市/景点/游玩主题
         </div>
-        <div class="header-right iconfont arrow-icon">
-            城市
-            <span class="iconfont arrow-icon">&#xe64a;</span>
-        </div>
+        <router-link to="/city">
+            <div class="header-right iconfont arrow-icon">
+                {{this.city}}
+                <span class="iconfont arrow-icon">&#xe64a;</span>
+            </div>
+        </router-link>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'HomeHeader'
+    name: 'HomeHeader',
+    props: {
+        city: String
+    }
 }
 </script>
 
@@ -49,6 +54,7 @@ export default {
         float right
         width 1.24rem
         text-align center
+        color #fff
         .arrow-icon
             margin-left: -0.04rem
             font-size: 0.24rem

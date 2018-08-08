@@ -1,6 +1,12 @@
 <template>
     <div class="wrapper">
-        <swiper :options="swiperOption">
+        <!-- 
+        v-if="showSwiper" 
+        为了解决自动显示最后一张图
+        原因是swiper初次渲染时，swiperList还是从外部传进来的空数组，当axios数据加载后，swiperList里才有数据
+        解决是判断length长度，如果为空，就是false，不会创建swiper
+         -->
+        <swiper :options="swiperOption" v-if="showSwiper">
             <swiper-slide v-for="(item, id) in swiperList" :key="id">
                 <img :src="item.imgUrl" class="swiper-img" alt="去哪儿门票">
             </swiper-slide>
@@ -11,26 +17,21 @@
 
 <script>
 export default {
+    props: {
+        swiperList: Array
+    },
     data() {
         return {
             swiperOption: {
                 pagination: '.swiper-pagination',
                 loop: true
-            },
-            swiperList: [{
-                id: '0001',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1805/3b/ef86879aa50e3002.jpg_750x200_2a108508.jpg'
-            }, {
-                id: '0002',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1807/a1/41a802abfc4f0202.jpg_750x200_9f0cf69c.jpg'
-            }, {
-                id: '0003',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1807/e8/ad9398da40eb6402.jpg_750x200_f9e744db.jpg'
-            }]
+            }
         }
     },
     computed: {
-        
+        showSwiper () {
+            return this.swiperList.length
+        }
     },
     methods: {
         

@@ -1,0 +1,49 @@
+{
+    "ret": "true",
+    "data": {
+        "list": {
+            "sights": [{
+                "id": "0011",
+                "link": "",
+                "title": "南山滑雪场",
+                "desc": "北京专业级滑雪圣地",
+                "price": "20",
+                "img": "http://img1.qunarzz.com/sight/p0/1511/d2/d2aec2dfc5aa771290.water.jpg_140x140_abb362a7.jpg"
+            }, {
+                "id": "0015",
+                "link": "",
+                "title": "长城",
+                "desc": "秀美长城，关键是人少",
+                "price": "20",
+                "img": "http://img1.qunarzz.com/sight/p0/1708/2b/2b6378fd3b2e1d86a3.img.jpg_140x140_eae81520.jpg"
+            }, {
+                "link": "",
+                "title": "南山滑雪场",
+                "desc": "北京专业级滑雪圣地",
+                "price": "20",
+                "img": "http://img1.qunarzz.com/sight/p0/1511/d2/d2aec2dfc5aa771290.water.jpg_140x140_abb362a7.jpg"
+            }, {
+                "id": "0013",
+                "link": "",
+                "title": "世界花卉大观园",
+                "desc": "揽天下奇花异草，聚世界经典园林",
+                "price": "20",
+                "img": "http://img1.qunarzz.com/sight/p0/1604/1e/1e75f8e1af9fe81f90.img.jpg_140x140_b555f882.jpg"
+            }, {
+                "id": "0014",
+                "link": "",
+                "title": "颐和园",
+                "desc": "保存完整的一座皇家行宫御苑",
+                "price": "20",
+                "img": "http://img1.qunarzz.com/sight/p0/1505/d2/d274c92de14c93da.water.jpg_140x140_e20be8e0.jpg"
+            }, {
+                "id": "0012",
+                "link": "",
+                "title": "故宫",
+                "desc": "东方宫殿建筑代表，世界宫殿建筑典范",
+                "price": "20",
+                "img": "http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_140x140_80f63803.jpg"
+            }]
+        }
+    }
+}
