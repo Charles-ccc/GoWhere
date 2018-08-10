@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="area" v-for="(itemList, key) in cities" :key="key">
+            <div class="area" v-for="(itemList, key) in cities" :key="key" :ref="key">
                 <div class="title border-topbottom">{{key}}</div>
                 <div class="item-list">
                     <div class="item border-bottom" v-for="(innerItem, index) in itemList" :key="index">
@@ -46,10 +46,13 @@ export default {
     },
     watch: {
         letter() {
-            console.log(this.letter)
+            // console.log(this.letter)
             // 借用better-scroll接口
             if(this.letter) {
-                this.scroll.scrollToElement()
+                const element = this.$refs[this.letter][0]
+                // 不加[0]，会是一个数组，不符合better-scroll的要求
+                // console.log(element)
+                this.scroll.scrollToElement(element)
             }
         }
     }

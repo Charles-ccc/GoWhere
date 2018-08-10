@@ -45,6 +45,7 @@ export default {
             })
         },
         handleLetterChange(letter) {
+            // 接收到从Alphabet.vue传递过来的值
             this.letter = letter
         }
     }
