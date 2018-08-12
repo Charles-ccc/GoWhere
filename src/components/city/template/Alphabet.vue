@@ -23,10 +23,18 @@ export default {
     },
     data() {
         return {
-            touchStatus:  false
+            touchStatus:  false,
+            startY: 0,
+            time: null
         }
     },
+    // 当数据传递进来之后再渲染该组件，然后再去执行updated()
+    updated() {
+        // 获取A距离顶部的高度
+        this.startY = this.$refs['A'][0].offsetTop
+    },
     computed: {
+        // 根据下标找到对应的位置，需要一个数组存储字母列表
         letters() {
             const letters = []
             for (let i in this.cities) {
@@ -45,13 +53,21 @@ export default {
         },
         handleTouchMove(e) {
             if(this.touchStatus) {
-                // 获取A距离顶部的高度
-                const startY = this.$refs['A'][0].offsetTop
-                const touchY = e.touches[0].clientY - 79
-                const index = Math.floor((touchY - startY) / 20)
-                if (index >= 0 && index < this.letters.length) {
-                    this.$emit('change', this.letters[index])
+                // 函数节流，因为手指滚动时，触发的频率太高。
+                if(this.timer){
+                    clearTimeout(this.timer)
                 }
+                // 延迟16ms执行，假设在16ms间有重复手指滚动，就把上次的清除掉，重新执行
+                // 有效降低触发频率
+                this.timer = setTimeout(() => {
+                    // 滚动时手指距离header的差值
+                    const touchY = e.touches[0].clientY - 79
+                    const index = Math.floor((touchY - startY) / 20)
+                    if (index >= 0 && index < this.letters.length) {
+                        this.$emit('change', this.letters[index])
+                    }
+                }, 16)
+                
             }
         },
         handleTouchEnd() {

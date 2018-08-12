@@ -45,6 +45,7 @@ export default {
         this.scroll = new BScroll(this.$refs.wrapper)
     },
     watch: {
+        // 监听letter的变化
         letter() {
             // console.log(this.letter)
             // 借用better-scroll接口
