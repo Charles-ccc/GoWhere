@@ -5,14 +5,18 @@
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">深圳</div>
+                        <div class="button">{{this.currentCity}}</div>
                     </div>
                 </div>
             </div>
             <div class="area">
                 <div class="title border-topbottom">热门城市</div>
                 <div class="button-list">
-                    <div class="button-wrapper" v-for="(item, index) in hotCities" :key="index">
+                    <div class="button-wrapper" 
+                         v-for="(item, index) in hotCities" 
+                         :key="index"
+                         @click="handleCityClick(item.name)"
+                    >
                         <div class="button">{{item.name}}</div>
                     </div>
                 </div>
@@ -20,7 +24,11 @@
             <div class="area" v-for="(itemList, key) in cities" :key="key" :ref="key">
                 <div class="title border-topbottom">{{key}}</div>
                 <div class="item-list">
-                    <div class="item border-bottom" v-for="(innerItem, index) in itemList" :key="index">
+                    <div class="item border-bottom" 
+                         v-for="(innerItem, index) in itemList" 
+                         :key="index"
+                         @click="handleCityClick(innerItem.name)"
+                    >
                         {{innerItem.name}}
                     </div>
                 </div>
@@ -31,6 +39,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import {mapState, mapActions} from 'vuex'
 export default {
     props: {
         cities: Object,
@@ -40,6 +49,23 @@ export default {
     data() {
         return {
         }
+    },
+    methods: {
+        handleCityClick(city) {
+            // 触发actions下的changeAcCity,并把city传过去
+            // this.$store.dispatch('changeAcCity', city) 
+            // 用了...mapMutations就改下为
+            this.changeAcCity(city)
+            this.$router.push('/')
+        },
+        ...mapActions(['changeAcCity'])
+    },
+    computed: {
+        // 使用mapState把vuex的数据映射到本组件的computed属性里
+        // ...mapState(['city'])
+        // 另一种写法，这样写的话，调用就不用 this.$store.state.city 了
+        ...mapState({currentCity: 'city'})
+        
     },
     mounted() {
         this.scroll = new BScroll(this.$refs.wrapper)

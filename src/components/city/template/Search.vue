@@ -8,6 +8,7 @@
                 <li class="search-item border-bottom" 
                     v-for="(item, index) of list" 
                     :key="index"
+                    @click="handleCityClick(item.name)"
                     >
                     {{item.name}}
                 </li>
@@ -19,6 +20,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import {mapState, mapActions} from 'vuex'
 export default {
     props: {
         cities: Object
@@ -30,6 +32,16 @@ export default {
             timer: null
         }
     },
+    methods: {
+        handleCityClick(city) {
+            // 触发actions下的changeAcCity,并把city传过去
+            // this.$store.dispatch('changeAcCity', city) 
+            // 用了...mapMutations就改下为
+            this.changeAcCity(city)
+            this.$router.push('/')
+        },
+        ...mapActions(['changeAcCity'])
+    },
     mounted () {
         this.scroll = new BScroll(this.$refs.search)
     },
@@ -39,6 +51,7 @@ export default {
             if(this.timer) {
                 clearTimeout(this.timer)
             }
+            // 如果输入框为空，就把列表清空
             if(!this.keyword) {
                 this.list = []
                 return
