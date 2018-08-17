@@ -15,6 +15,7 @@ import HomeIcons from './template/Icons'
 import HomeRecommend from './template/Recommend'
 import HomeWeekend from './template/Weekend'
 import axios from 'axios'
+import {mapState} from 'vuex'
 export default {
     components: {
         HomeHeader,
@@ -29,12 +30,17 @@ export default {
             swiperList: [],
             iconList: [],
             recommendList: [],
-            weekendList: []
+            weekendList: [],
+            lastCity: ''
         }
+    },
+    computed: {
+        ...mapState(['city'])
     },
     methods: {
         getHomeInfo() {
-            axios.get('/api/index.json')
+            // 为了实现根据城市改变首页内容，传递城市名
+            axios.get('/api/index.json?city=' + this.city)
             .then((res) => {
                 res = res.data
                 if(res.ret && res.data) {
@@ -50,8 +56,18 @@ export default {
             })
         }
     },
-    mounted() {
+    mounted () {
+        this.lastCity = this.city
         this.getHomeInfo()
+    },
+    activated () {
+        // 在使用keep-alive之后，就会有该生命周期函数
+        // 重新加载页面就会重新执行 activted
+        // 新建一个lastCity变量来存储上一次的城市，如果是相同的，则不会再次进行ajax请求
+        if(this.lastCity !== this.city) {
+            this.lastCity = this.city
+            this.getHomeInfo()
+        }
     }
 }
 </script>
