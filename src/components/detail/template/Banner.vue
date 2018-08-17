@@ -40,6 +40,7 @@ export default {
                 color #fff
                 text-shadow 0 1px 2px rgba(0,0,0,0.70)
             .banner-number
+                display block
                 width 1.2rem
                 height 0.4rem
                 line-height 0.4rem
