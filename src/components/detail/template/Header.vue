@@ -66,6 +66,7 @@
     left 0
     right 0
     height 0.86rem
+    z-index 3
     line-height 0.86rem
     text-align center
     color #ffffff

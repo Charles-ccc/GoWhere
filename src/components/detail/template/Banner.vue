@@ -1,42 +1,46 @@
 <template>
     <div>
         <div class="banner" @click="handleBannerClick">
-            <img class="banner-img" src="http://img1.qunarzz.com/sight/p0/1507/64/34362835b4a219af8b36803d31a6380f.water.jpg_600x330_4ae7abf5.jpg">
+            <img class="banner-img" :src="bannerImg">
             <div class="banner-info">
                 <div class="banner-number">
                     <span class="iconfont">&#xe632;</span>
-                    <span>16</span>
+                    <span>{{this.bannerImgs.length}}</span>
                 </div>
-                <div class="banner-title">深圳小梅沙海洋世界</div>
+                <div class="banner-title">{{this.sightName}}</div>
             </div>
         </div>
-        <common-gallary 
-            :imgs="imgs" 
-            v-show="showGallary" 
-            @close="handleGarallyClose"
-        >
-        </common-gallary>
+        <fade-animation>
+            <common-gallary 
+                :imgs="bannerImgs" 
+                v-show="showGallary" 
+                @close="handleGarallyClose"
+            >
+            </common-gallary>
+        </fade-animation>
+        
     </div>
 </template>
 
 <script>
 import CommonGallary from 'common/gallary/Gallary'
+import FadeAnimation from 'common/fade/FadeAnimation'
 export default {
     name: 'DetailBanner',
+    props: {
+        sightName: String,
+        bannerImg: String,
+        bannerImgs: Array
+    },
     data() {
         return {
             showGallary: false,
-            imgs: [
-                "http://img1.qunarzz.com/sight/p0/1507/64/34362835b4a219af8b36803d31a6380f.water.jpg_r_800x800_25544683.jpg",
-                "http://img1.qunarzz.com/sight/p0/1412/29/b332c6de775de6b9c2ca2cafca33a963.water.jpg_r_800x800_8deed802.jpg",
-                "http://img1.qunarzz.com/sight/p0/201301/05/daf2f35b37f7c07693835fbb.png_r_800x800_caa083b3.png",
-                "http://img1.qunarzz.com/sight/p0/201301/05/a998eae60618e52593835fbb.png_r_800x800_d1e2fee8.png",
-                "http://img1.qunarzz.com/sight/p0/201301/05/4487433de3574f7f93835fbb.png_r_800x800_6ce7545e.png"
-            ]
+            imgs: []
         }
     },
     components: {
-        CommonGallary
+        CommonGallary,
+        FadeAnimation
     },
     methods: {
         handleBannerClick () {
