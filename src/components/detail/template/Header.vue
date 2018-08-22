@@ -41,7 +41,7 @@
         },
         deactivated() {
             window.removeEventListener('scroll', this.handleScroll)
-        },
+        }
     }
 </script>
 

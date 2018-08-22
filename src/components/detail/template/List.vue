@@ -1,5 +1,5 @@
 <template>
-    <div ref="wrapper">
+    <div>
         <div>
             <div class="item" v-for="(item, index) in list" :key="index">
                 <div class="item-title border-bottom">
@@ -15,15 +15,11 @@
 </template>
 
 <script>
-import BScroll from 'better-scroll'
     export default {
         name: "DetailList",
         props: {
             list: Array
-        },
-        mounted() {
-            this.scroll = new BScroll(this.$refs.wrapper)
-        },
+        }
     }
 </script>
 
