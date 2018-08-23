@@ -15,3 +15,21 @@
 7. 详情页的图片画廊`Gallary.vue`是使用的`vue-awesome-swiper`插件，注意需要加上`observer: true, observeParents: true`，它的作用是当DOM结构改变之后，会自我刷新一次。
 8. 详情页的图片画廊的渐隐渐现的动画效果是单独的一个组件`FadeAnimation.html`，然后在`Banner.vue`中使用插槽的方式，来调用动画效果。
 9. 全局使用Vuex来进行数据的存取和派发，写在`store`文件夹下的`index.js`中。
+10. 函数节流，避免频繁触发函数事件，可以用这种方法
+    ```javascript
+        data() {
+            return {
+                timer : null
+            }
+        },
+        methods: {
+            throttle() {
+                if(this.timer){
+                    clearTimeout(this.timer)
+                }
+                this.timer = setTimeout(() => {
+                    // do something
+                }, 16)
+            }
+        }
+    ```
